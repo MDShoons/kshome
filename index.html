@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>광석이네 집 아카이브</title>
+  <meta name="description" content="김광석을 기억하는 독립 아카이브형 웹사이트 템플릿" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <button class="hamburger" aria-label="메뉴 열기" id="menuToggle">☰</button>
+    <a class="brand" href="#home" data-route="home">
+      <span class="brand-mark">K</span>
+      <span>
+        <strong>광석이네 집</strong>
+        <em>Archive Room</em>
+      </span>
+    </a>
+    <nav class="quick-links" aria-label="빠른 메뉴">
+      <a href="#notice" data-route="notice">공지</a>
+      <a href="#guestbook" data-route="guestbook">방명록</a>
+      <button id="openLogin" type="button">로그인</button>
+    </nav>
+  </header>
+
+  <aside class="side" id="sideNav">
+    <div class="side-card profile-card">
+      <div class="portrait" aria-hidden="true">
+        <span>音</span>
+      </div>
+      <h1>광석이네 집</h1>
+      <p>노래와 기억을 조용히 모아두는 개인 아카이브</p>
+    </div>
+
+    <nav class="main-nav" aria-label="주요 메뉴">
+      <a href="#home" data-route="home" class="active">HOME</a>
+      <a href="#intro" data-route="intro">소개</a>
+      <a href="#albums" data-route="albums">음반 노트</a>
+      <a href="#videos" data-route="videos">영상 자료</a>
+      <a href="#radio" data-route="radio">라디오/음성</a>
+      <a href="#gallery" data-route="gallery">사진방</a>
+      <a href="#board" data-route="board">자유글</a>
+      <a href="#guestbook" data-route="guestbook">그대에게</a>
+      <a href="#notice" data-route="notice">공지사항</a>
+    </nav>
+
+    <div class="side-card login-card" id="loginBox">
+      <h2>MEMBER</h2>
+      <div class="login-state" id="loginState">비회원으로 보는 중</div>
+      <label>아이디<input id="loginId" type="text" placeholder="admin" /></label>
+      <label>비밀번호<input id="loginPw" type="password" placeholder="demo1234" /></label>
+      <div class="login-actions">
+        <button class="primary" id="loginBtn" type="button">로그인</button>
+        <button id="logoutBtn" type="button">로그아웃</button>
+      </div>
+      <p class="hint">데모 계정: <b>admin / demo1234</b></p>
+    </div>
+
+    <div class="side-card tag-card">
+      <h2>TAG</h2>
+      <div class="tags" id="tagList"></div>
+    </div>
+  </aside>
+
+  <main class="layout">
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">PRIVATE MUSIC ARCHIVE</p>
+        <h2>오래된 노래가 머무는<br/>작은 방</h2>
+        <p class="lead">공연 기록, 방송 자료, 음반 메모, 팬들의 글을 한곳에 정리하는 새 아카이브 템플릿입니다.</p>
+        <div class="hero-actions">
+          <a href="#videos" data-route="videos" class="btn primary">영상 자료 보기</a>
+          <a href="#board" data-route="board" class="btn ghost">자료 등록하기</a>
+        </div>
+      </div>
+      <div class="hero-object" aria-hidden="true">
+        <div class="record"></div>
+        <div class="cassette">
+          <span></span><span></span>
+          <b>1990s ARCHIVE</b>
+        </div>
+      </div>
+    </section>
+
+    <section class="search-panel">
+      <div>
+        <h3>아카이브 검색</h3>
+        <p>제목, 분류, 태그를 기준으로 자료를 빠르게 찾습니다.</p>
+      </div>
+      <form id="searchForm">
+        <input id="searchInput" type="search" placeholder="예: 공연, 라디오, 음반, 사진" />
+        <button type="submit">검색</button>
+      </form>
+    </section>
+
+    <section class="dashboard">
+      <article class="stat-card"><strong id="statPosts">0</strong><span>등록 자료</span></article>
+      <article class="stat-card"><strong id="statVideos">0</strong><span>영상/음성</span></article>
+      <article class="stat-card"><strong id="statGallery">0</strong><span>사진 기록</span></article>
+      <article class="stat-card"><strong id="statGuests">0</strong><span>방명록</span></article>
+    </section>
+
+    <section class="content-grid">
+      <section class="panel wide" data-page="intro">
+        <div class="section-head">
+          <p>INTRO</p>
+          <h2>소개</h2>
+        </div>
+        <p class="body-text">이 템플릿은 특정 사이트의 코드를 복제하지 않고, 김광석을 기억하는 아카이브 운영 목적에 맞춰 새로 설계한 독립형 사이트입니다. 실제 운영 시에는 보유 권리가 있는 사진·음원·영상 링크만 등록하세요.</p>
+      </section>
+
+      <section class="panel wide" data-page="albums">
+        <div class="section-head">
+          <p>ALBUM NOTE</p>
+          <h2>음반 노트</h2>
+        </div>
+        <div class="cards" id="albumCards"></div>
+      </section>
+
+      <section class="panel wide" data-page="videos">
+        <div class="section-head">
+          <p>VIDEO ARCHIVE</p>
+          <h2>영상 자료</h2>
+        </div>
+        <div class="archive-list" id="videoList"></div>
+      </section>
+
+      <section class="panel wide" data-page="radio">
+        <div class="section-head">
+          <p>AUDIO ROOM</p>
+          <h2>라디오/음성</h2>
+        </div>
+        <div class="archive-list" id="radioList"></div>
+      </section>
+
+      <section class="panel wide" data-page="gallery">
+        <div class="section-head">
+          <p>GALLERY</p>
+          <h2>사진방</h2>
+        </div>
+        <div class="gallery" id="galleryGrid"></div>
+      </section>
+
+      <section class="panel wide" data-page="board">
+        <div class="section-head with-action">
+          <div>
+            <p>BOARD</p>
+            <h2>자유글</h2>
+          </div>
+          <button class="btn primary" id="openAdmin" type="button">자료 등록</button>
+        </div>
+        <div class="board-list" id="boardList"></div>
+      </section>
+
+      <section class="panel" data-page="guestbook">
+        <div class="section-head">
+          <p>MESSAGE</p>
+          <h2>그대에게</h2>
+        </div>
+        <div class="guestbook" id="guestbookList"></div>
+      </section>
+
+      <section class="panel" data-page="notice">
+        <div class="section-head">
+          <p>NOTICE</p>
+          <h2>공지사항</h2>
+        </div>
+        <ul class="notice-list" id="noticeList"></ul>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="adminDialog" class="modal">
+    <form method="dialog" class="modal-inner" id="adminForm">
+      <button class="modal-close" value="cancel" aria-label="닫기">×</button>
+      <h2>자료 등록</h2>
+      <p class="modal-help">로그인 후 등록하면 브라우저 저장소에 기록됩니다. Firebase 연결 시 DB 저장으로 교체할 수 있습니다.</p>
+      <label>분류
+        <select id="entryType">
+          <option value="board">자유글</option>
+          <option value="videos">영상 자료</option>
+          <option value="radio">라디오/음성</option>
+          <option value="gallery">사진방</option>
+          <option value="notice">공지사항</option>
+        </select>
+      </label>
+      <label>제목<input id="entryTitle" required placeholder="자료 제목" /></label>
+      <label>설명<textarea id="entryDesc" required placeholder="간단한 설명"></textarea></label>
+      <label>링크<input id="entryLink" placeholder="https://" /></label>
+      <menu>
+        <button value="cancel" type="button" id="cancelAdmin">취소</button>
+        <button class="primary" value="default" type="submit">등록</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <footer class="footer">
+    <p>© 광석이네 집 아카이브 템플릿. 권리 보유 자료만 등록하세요.</p>
+  </footer>
+
+  <script src="./src/firebase-config.example.js"></script>
+  <script src="./src/app.js"></script>
+</body>
+</html>
